@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../build/css/tailwind.css" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.7.3/dist/alpine.min.js" defer></script>
+  </head>
+  <body>
+
+      <div
+        class="flex flex-col items-center justify-center min-h-screen p-4 space-y-4 antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light"
+      >
+        <!-- Brand -->
+        <a
+          href="./register.html"
+          class="inline-block mb-6 text-3xl font-bold tracking-wider uppercase text-primary-dark dark:text-light"
+        >
+        CNSS
+        </a>
+        <main>
+          <div class="w-full max-w-sm px-4 py-6 space-y-6 bg-white rounded-md dark:bg-darker">
+            <h1 class="text-xl font-semibold text-center">Register</h1>
+            <form action="#" class="space-y-6">
+              <input
+                class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+                type="text"
+                name="nom"
+                id="nom"
+                placeholder="Non"
+                required
+              />
+              <input
+              class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+              type="text"
+              name="prenom"
+              id="prenom"
+              placeholder="Prenon"
+              required
+            />
+              <input
+              class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+              type="text"
+              name="cin"
+              id="cin"
+              placeholder="Cin"
+              required
+            />
+            <input
+            class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+            type="text"
+            name="cnie"
+            id="cnie"
+            placeholder="Cnie"
+            required
+          />
+              <input
+              class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+              type="text"
+              name="tel"
+              id="tel"
+              placeholder="Tel"
+              required
+            />
+            <input
+            class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+            type="text"
+            name="adress"
+            id="adress"
+            placeholder="Adress"
+            required
+          />
+              <input
+                class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email address"
+                required
+              />
+              <input
+                class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                required
+              />
+          
+            <select onchange="change()"  name="situationfamiliale" id="situationfamiliale"  class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker">
+            <option value="">SituationFamiliale</option>
+            <option value="célibataire">célibataire</option>
+            <option value="marié">marié</option>
+            <option value="divorce">divorce</option>
+            </select>
+              
+            <input
+            class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+            type="text"
+            name="conjoint"
+            id="conjoint"
+            placeholder="Conjoint"
+            required
+           />
+              <input
+              class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+              type="text"
+              name="enfants"
+              id="enfants"
+              placeholder="Nombre Enfants"
+              onchange="enfant()"
+              required
+            />
+            <div id="divenfants" class="min-h-[50%]">
+
+            </div>
+            <input
+            class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+            type="text"
+            name="agence"
+            id="agence"
+            placeholder="Agence"
+            required
+          />
+          <input
+          class="w-full px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+          type="text"
+          name="ville"
+          id="ville"
+          placeholder="Ville"
+          required
+    />
+              <div>
+                <button
+                  type="submit"
+                  id="ajouter"
+                  class="w-full px-4 py-2 font-medium text-center text-white transition-colors duration-200 rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-1 dark:focus:ring-offset-darker"
+                >
+                  Register
+                </button>
+              </div>
+            </form>
+
+            <!-- Login link -->
+            <div class="text-sm text-gray-600 dark:text-gray-400">
+              Already have an account? <a href="../../index.html" class="text-blue-600 hover:underline">Login</a>
+            </div>
+          </div>
+        </main>
+      </div>
+     
+      <script>
+        //function en change select 
+        function change(){
+            select = document.getElementById("situationfamiliale");
+            if(select.value != "célibataire"){
+                document.getElementById("conjoint").style.display = "block";
+                document.getElementById("enfants").style.display = "block";
+             }
+           else{
+                document.getElementById("conjoint").style.display = "none";
+                document.getElementById("enfants").value ="";
+                document.getElementById("enfants").style.display = "none";
+                document.getElementById("divenfants").innerHTML="";
+                document.getElementById("divenfants").style.display = "none";
+              
+            }
+        }
+    
+       
+
+        //input enfants
+        function enfant(){
+            let enfant =parseInt(document.getElementById("enfants").value);
+            document.getElementById("divenfants").style.display = "block";
+
+            for (let index = 0; index <enfant; index++) {
+              document.getElementById("divenfants").innerHTML+=
+              `
+              <input type="text" id="e${index}"  name="enfant"  placeholder="Enfants"  class="w-full  px-4 py-2 border rounded-md dark:bg-darker dark:border-gray-700 focus:outline-none focus:ring focus:ring-primary-100 dark:focus:ring-primary-darker"
+ />
+              `
+            }
+        }
+
+  
+    </script>
+
+<script src="../build/js/register.js" type="module"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+  </body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>CNSS Dashboard</title>
+    <link rel="stylesheet" href="../build/css/tailwind.css" />
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="../build/css/tablecrud.css">
+   
+  </head>
+  <body>
+    <div  x-init="$refs.loading.classList.add('hidden'); setColors(color);" :class="{ 'dark': isDark}">
+      <div class="flex h-screen antialiased text-gray-900 bg-gray-100 dark:bg-dark dark:text-light">
+        <!-- Sidebar -->
+        <aside class="flex-shrink-0 hidden w-64 bg-white border-r dark:border-primary-darker dark:bg-darker md:block">
+          <div class="flex flex-col h-full">
+            <!-- Sidebar links -->
+            <nav aria-label="Main" class="flex-1 px-2 py-4 space-y-2 overflow-y-hidden hover:overflow-y-auto">
+              <!-- Dashboards links -->
+              <div x-data="{ isActive: true, open: true}">
+                <!-- active & hover classes 'bg-primary-100 dark:bg-primary' -->
+                <a
+                  href="./dashboard.html"
+                  @click=""
+                  class="flex items-center p-2 text-gray-500 transition-colors rounded-md dark:text-light hover:bg-primary-100 dark:hover:bg-primary"
+                  :class="{'bg-primary-100 dark:bg-primary': isActive || open}"
+                  role="button"
+                  aria-haspopup="true"
+                  :aria-expanded="(open || isActive) ? 'true' : 'false'"
+                >
+                  <span aria-hidden="true">
+                    <svg
+                      class="w-5 h-5"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+                      />
+                    </svg>
+                  </span>
+                  <span class="ml-2 text-sm"> Dashboards </span>
+                  <span class="ml-auto" aria-hidden="true">
+                    <!-- active class 'rotate-180' -->
+                    <svg
+                      class="w-4 h-4 transition-transform transform"
+                      :class="{ 'rotate-180': open }"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                    >
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </span>
+                </a>
+                <div role="menu" x-show="open" class="mt-2 space-y-2 px-7" aria-label="Dashboards">
+                
+                  <a
+                    href="../pages/tabledetailsmaladie.html"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-700 transition-colors duration-200 rounded-md dark:text-light dark:hover:text-light hover:text-gray-700"
+                  >
+                    DetailsMaladie
+                  </a>
+                  <a
+                    href="../pages/tabledossiermedical.html"
+                    role="menuitem"
+                    class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                  >
+                    DossierMedical
+                  </a>
+
+                  <a
+                  href="../pages/tablepatient.html"
+                  role="menuitem"
+                  class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+                >
+                  Patient
+                </a>
+
+                <a
+                href="../pages/tableagent.html"
+                role="menuitem"
+                class="block p-2 text-sm text-gray-400 transition-colors duration-200 rounded-md dark:hover:text-light hover:text-gray-700"
+              >
+                Agent
+              </a>
+                 
+                </div>
+              </div>
+
+        
+            </nav>
+
+            <!-- Sidebar footer -->
+            <div class="flex-shrink-0 px-2 py-4 space-y-2">
+              <button
+                @click="openSettingsPanel"
+                type="button"
+                id="logout"
+                class="flex items-center justify-center w-full px-4 py-2 text-sm text-white rounded-md bg-primary hover:bg-primary-dark focus:outline-none focus:ring focus:ring-primary-dark focus:ring-offset-1 focus:ring-offset-white dark:focus:ring-offset-dark"
+              >
+                <span aria-hidden="true">
+                  <svg
+                    class="w-4 h-4 mr-2"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
+                    />
+                  </svg>
+                </span>
+                <span>Logout</span>
+              </button>
+            </div>
+          </div>
+        </aside>
+
+        <div class="flex-1 h-full overflow-x-hidden overflow-y-auto">
+          <!-- Navbar -->
+          <header class="relative bg-white dark:bg-darker">
+            <div class="flex items-center justify-between p-2 border-b dark:border-primary-darker">
+
+              <a
+                href="index.html"
+                class="inline-block text-2xl font-bold tracking-wider uppercase text-primary-dark dark:text-light"
+              >
+                CNSS
+              </a>
+
+              </nav>
+
+
+            </div>
+            
+          </header>
+
+          <!-- Main content -->
+          <main>
+            <div class="container-xl">
+              <div class="table-responsive">
+                <div class="table-wrapper">
+                  <div class="table-title">
+                    <div class="row">
+                      <div class="col-sm-6">
+                        <h2><b>DetailsMaladie</b> CNSS</h2>
+                      </div>
+                      <div class="col-sm-6">
+                        <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Add New DetailsMaladie</span></a>						
+                      </div>
+                    </div>
+                  </div>
+                  <table class="table table-striped table-hover">
+                    <thead>
+                      <tr>
+                        <th>Type</th>
+                        <th>Nom</th>
+                        <th>Code</th>
+                        <th>Prix</th>
+                                    <th>Remboursement</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody id="bodytable">
+                  
+                    </tbody>
+                  </table>
+                </div>
+              </div>        
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="addEmployeeModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form>
+                    <div class="modal-header">						
+                      <h4 class="modal-title">Add DetailsMaladie</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">					
+                      <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" name="type" id="type" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" name="nom" id="nom" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Code</label>
+                        <input type="text" name="code" id="code" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Prix</label>
+                        <input type="text" name="prix" id="prix" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Remboursement</label>
+                        <input type="text" name="remboursement" id="remboursement" class="form-control" required>
+                      </div>				
+                    </div>
+                    <div class="modal-footer">
+                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                      <input type="submit"  id="ajouter" class="btn btn-success" value="Add">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Edit Modal HTML -->
+            <div id="editEmployeeModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form>
+                    <div class="modal-header">						
+                      <h4 class="modal-title">Edit DetailsMaladie</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                            <div class="modal-body">					
+                      <div class="form-group">
+                        <label>Type</label>
+                        <input type="text" name="type" id="ttype" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Nom</label>
+                        <input type="text" name="nom" id="tnom" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <label>Code</label>
+                        <input type="text" name="code" id="tcode" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Prix</label>
+                        <input type="text" name="prix" id="tprix" class="form-control" required>
+                      </div>
+                                <div class="form-group">
+                        <label>Remboursement</label>
+                        <input type="text" name="remboursement" id="tremboursement" class="form-control" required>
+                      </div>				
+                    </div>
+                    <div class="modal-footer">
+                      <input type="hidden" id="id">
+                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                      <input type="submit" id="modifier" class="btn btn-info" value="Save">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Delete Modal HTML -->
+            <div id="deleteEmployeeModal" class="modal fade">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <form>
+                    <div class="modal-header">						
+                      <h4 class="modal-title">Delete DetailsMaladie</h4>
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    </div>
+                    <div class="modal-body">					
+                      <p>
+                                    Voulez-vous vraiment supprimer ces enregistrements ?</p>
+                      <p class="text-warning"><small>Cette action ne peut pas être annulée.</small></p>
+                    </div>
+                    <div class="modal-footer">
+                      <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+                      <input type="submit" id="supprimer" class="btn btn-danger" value="Delete">
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+          </main>
+        </div>
+
+
+
+
+        <script src="../build/js/detailsmaladie.js" type="module"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.0/jquery.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
